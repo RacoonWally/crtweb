@@ -3,19 +3,11 @@ import {connect} from 'react-redux'
 
 import NavBar from '../../components/navbar'
 import Card from "../../components/card";
-import {
-    fetchData
-} from "../../actions";
 
 import './index.scss'
 
 
-class MainPage extends Component {
-
-    componentDidMount() {
-        const {fetchData} = this.props;
-        fetchData();
-    }
+class FavPage extends Component {
 
     formationArr = (jsonlist = []) => {
         const newArr = new Array();
@@ -26,14 +18,14 @@ class MainPage extends Component {
     };
 
     render() {
-        const {dataList} = this.props;
-        const dataListArr = this.formationArr(dataList);
+        const {favArr} = this.props;
+        const datafavList = this.formationArr(favArr);
 
         return (
             <div>
                 <NavBar/>
                 <div className='main-page_card-list'>
-                    {dataListArr.map((item, key) => {
+                    {datafavList.map((item, key) => {
                         return (
                             <Card itemData={item} key={key}/>
                         )
@@ -44,14 +36,13 @@ class MainPage extends Component {
     }
 }
 
-
 const mapStateToProps = (state) => {
-    const {dataList} = state.mainPage;
-    return {dataList};
+    console.log("state")
+    console.log(state)
+    const {favArr} = state.favPage;
+    return {
+        favArr
+    };
 };
 
-const mapDispatchToProps = {
-    fetchData
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps)(FavPage);
