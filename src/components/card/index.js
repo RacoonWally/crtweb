@@ -11,9 +11,6 @@ import './index.scss'
 
 class Card extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    // }
 
     state = {
         id: "",
@@ -26,7 +23,6 @@ class Card extends Component {
             active: fav
         })
     }
-
 
 
     likeApartment = (id) => {
@@ -43,7 +39,6 @@ class Card extends Component {
     };
 
     render() {
-        console.log("render")
         const {active} = this.state;
         const {id, name, price, description, image} = this.props.itemData;
 

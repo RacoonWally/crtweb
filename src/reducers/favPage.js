@@ -30,8 +30,6 @@ export default (state = initialState, {type, payload}) => {
             item.fav = false;
             const key = R.findIndex(R.propEq('id', id))(favArr);
             favArr[key] = item;
-            console.log(key);
-            console.log(favArr);
             return {
                 favArr: favArr
             }

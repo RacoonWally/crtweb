@@ -14,8 +14,6 @@ class FavPage extends Component {
         for (let key in jsonlist) {
             newArr.push(jsonlist[key])
         }
-        console.log("newArr")
-        console.log(newArr)
         return newArr
     };
 
