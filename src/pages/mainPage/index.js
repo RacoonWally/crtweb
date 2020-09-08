@@ -15,6 +15,7 @@ class MainPage extends Component {
     componentDidMount() {
         const {fetchData} = this.props;
         fetchData();
+
     }
 
     formationArr = (jsonlist = []) => {
@@ -26,8 +27,14 @@ class MainPage extends Component {
     };
 
     render() {
-        const {dataList} = this.props;
-        const dataListArr = this.formationArr(dataList);
+
+        const {dataList, favArr} = this.props;
+        let dataListArr;
+        if (favArr.length !== 0){
+            dataListArr = this.formationArr(favArr);
+        } else {
+            dataListArr = this.formationArr(dataList);
+        }
 
         return (
             <div>
@@ -47,7 +54,11 @@ class MainPage extends Component {
 
 const mapStateToProps = (state) => {
     const {dataList} = state.mainPage;
-    return {dataList};
+    const {favArr} = state.favPage;
+    return {
+        dataList,
+        favArr
+    };
 };
 
 const mapDispatchToProps = {

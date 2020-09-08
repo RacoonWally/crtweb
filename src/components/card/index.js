@@ -11,10 +11,23 @@ import './index.scss'
 
 class Card extends Component {
 
+    // constructor(props) {
+    //     super(props);
+    // }
+
     state = {
         id: "",
-        active: false
+        active: "false"
     };
+
+    componentDidMount() {
+        const {fav} = this.props.itemData;
+        this.setState({
+            active: fav
+        })
+    }
+
+
 
     likeApartment = (id) => {
         const {addToFavourite, delFromFavourite} = this.props;
@@ -30,8 +43,10 @@ class Card extends Component {
     };
 
     render() {
+        console.log("render")
         const {active} = this.state;
         const {id, name, price, description, image} = this.props.itemData;
+
 
         return (
             <div className='card-item'>

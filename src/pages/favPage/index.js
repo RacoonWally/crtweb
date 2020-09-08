@@ -14,18 +14,20 @@ class FavPage extends Component {
         for (let key in jsonlist) {
             newArr.push(jsonlist[key])
         }
+        console.log("newArr")
+        console.log(newArr)
         return newArr
     };
 
     render() {
-        const {favArr} = this.props;
-        const datafavList = this.formationArr(favArr);
+        const {filteredList} = this.props;
+        const dataFavList = this.formationArr(filteredList);
 
         return (
             <div>
                 <NavBar/>
                 <div className='main-page_card-list'>
-                    {datafavList.map((item, key) => {
+                    {dataFavList.map((item, key) => {
                         return (
                             <Card itemData={item} key={key}/>
                         )
@@ -37,11 +39,9 @@ class FavPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("state")
-    console.log(state)
-    const {favArr} = state.favPage;
+    const {filteredList} = state.favPage;
     return {
-        favArr
+        filteredList
     };
 };
 
